@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py6502emu"
+version = "1.0.0"
+description = "A comprehensive Python emulator for the Western Design Center W65C02S microprocessor"
+authors = [{name = "Siska-Tech", email = "contact@siska-tech.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["emulator", "6502", "w65c02s", "cpu", "microprocessor", "assembly"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Emulators",
+    "Topic :: Education",
+]
+project-urls = {
+    "Homepage" = "https://github.com/siska-tech/py6502emu",
+    "Bug Reports" = "https://github.com/siska-tech/py6502emu/issues",
+    "Source" = "https://github.com/siska-tech/py6502emu",
+    "Documentation" = "https://github.com/siska-tech/py6502emu/blob/main/README.md",
+}
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+    "black>=22.0",
+    "pylint>=2.15",
+    "sphinx>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--cov=py6502emu --cov-report=html --cov-report=term-missing"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pylint.messages_control]
+disable = ["C0103", "R0903"]
